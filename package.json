@@ -11,5 +11,8 @@
   "devDependencies": {
     "@types/serialport": "^8.0.2",
     "prettier": "^2.3.2"
+  },
+  "scripts": {
+    "start": "ts-node ./src/index.ts"
   }
 }

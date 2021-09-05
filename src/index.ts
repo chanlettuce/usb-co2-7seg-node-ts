@@ -1,7 +1,7 @@
 import { connectTo } from './serial/connect';
 
-const DEVICE_PATH_SENSOR = '/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0';
-const DEVICE_PATH_DISPLAY = '/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0';
+const DEVICE_PATH_SENSOR = '/dev/sensor';
+const DEVICE_PATH_DISPLAY = '/dev/display';
 
 const sleep = (timeout: number) => new Promise((resolve) => setTimeout(resolve, timeout));
 

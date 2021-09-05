@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+  app:
+    build:
+      context: .
+    restart: always
+    privileged: true
+    volumes:
+      - type: bind
+        source: ${DEVICE_PATH_SENSOR}
+        target: '/dev/sensor'
+      - type: bind
+        source: ${DEVICE_PATH_DISPLAY}
+        target: '/dev/display'
+    logging:
+      options:
+        max-size: '200k'
+        max-file: '10'
