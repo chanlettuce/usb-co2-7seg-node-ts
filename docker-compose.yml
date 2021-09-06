@@ -17,7 +17,7 @@ services:
         target: '/dev/temp'
     environment:
       AMBIENT_CHANNEL_ID: ${AMBIENT_CHANNEL_ID}
-      AMBIENT_WRITE_KEY: ${AMBIENT_CHANNEL_ID}
+      AMBIENT_WRITE_KEY: ${AMBIENT_WRITE_KEY}
     logging:
       options:
         max-size: '200k'
