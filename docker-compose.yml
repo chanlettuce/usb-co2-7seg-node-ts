@@ -1,4 +1,4 @@
-version: "3.5"
+version: '3.5'
 services:
   app:
     build:
@@ -8,14 +8,17 @@ services:
     volumes:
       - type: bind
         source: ${DEVICE_PATH_DISPLAY}
-        target: "/dev/display"
+        target: '/dev/display'
       - type: bind
         source: ${DEVICE_PATH_CO2_SENSOR}
-        target: "/dev/co2"
+        target: '/dev/co2'
       - type: bind
         source: ${DEVICE_PATH_TEMP_SENSOR}
-        target: "/dev/temp"
+        target: '/dev/temp'
+    environment:
+      AMBIENT_CHANNEL_ID: ${AMBIENT_CHANNEL_ID}
+      AMBIENT_WRITE_KEY: ${AMBIENT_CHANNEL_ID}
     logging:
       options:
-        max-size: "200k"
-        max-file: "10"
+        max-size: '200k'
+        max-file: '10'

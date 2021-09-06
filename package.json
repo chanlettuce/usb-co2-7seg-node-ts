@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "ambient-lib": "^1.0.4",
     "serialport": "^9.2.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
