@@ -2,7 +2,10 @@ import SerialPort from 'serialport';
 
 export const connectTo = (devicePath: string) =>
   new Promise<SerialPort>((resolve, reject) => {
-    const port = new SerialPort(devicePath, { baudRate: 9600, autoOpen: false });
+    const port = new SerialPort(devicePath, {
+      baudRate: 9600,
+      autoOpen: false,
+    });
 
     console.info('ポートを開けるぞ！: ', devicePath);
 
