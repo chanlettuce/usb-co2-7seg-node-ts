@@ -13,7 +13,7 @@ const formatForDisplay = (num: number, length: number, cutoff = 0) =>
 
 /** チカチカ～ */
 const showMode = async (mode: number, port: SerialPort) => {
-  for (let index = 0; index < 2; index++) {
+  for (let index = 0; index < 4; index++) {
     port.write(mode + "\n");
     await sleep(300);
     port.write("\n");
@@ -22,11 +22,13 @@ const showMode = async (mode: number, port: SerialPort) => {
 };
 
 const main = async () => {
-  const [displayPort, co2SensorPort, tempSensorPort] = await Promise.all([
+  const connections = await Promise.all([
     connectTo(DEVICE_PATH_DISPLAY),
     connectTo(DEVICE_PATH_CO2_SENSOR),
     connectTo(DEVICE_PATH_TEMP_SENSOR),
   ]);
+
+  const [displayPort, co2SensorPort, tempSensorPort] = connections;
 
   let mode: 0 | 1 | 2 = 0;
 
@@ -55,6 +57,13 @@ const main = async () => {
     console.info({ degrees, percent });
     temp = +degrees;
     humidity = +percent;
+  });
+
+  process.on("SIGTERM", () => {
+    // なんか効かないっっぽい
+    // displayPort.write("0000\n");
+    connections.forEach((conn) => conn.close());
+    process.exit(0);
   });
 
   // よくわかんねーけど！
